@@ -1,0 +1,66 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+---
+
+<Layout title="Blog" description="Writing on engineering leadership, building teams, and the work in between.">
+  <section class="mx-auto max-w-3xl px-6 sm:px-8 pt-24 sm:pt-32">
+    <p class="font-display italic text-base text-pine dark:text-pine-bright mb-6">
+      Blog —
+    </p>
+    <h1 class="font-display text-5xl sm:text-6xl leading-[1.05] tracking-tight">
+      Writing on the work.
+    </h1>
+    <p class="mt-6 text-lg text-coal/70 dark:text-bone-dim/70 max-w-2xl">
+      Notes on engineering leadership, building teams, and the things that
+      sit between systems and people.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 sm:px-8 mt-20">
+    {
+      posts.length === 0 ? (
+        <p class="text-coal/60 dark:text-bone-dim/60 italic">
+          Nothing posted yet.
+        </p>
+      ) : (
+        <ul class="divide-y hairline border-y">
+          {posts.map((post) => (
+            <li>
+              <a
+                href={`/blog/${post.id}`}
+                class="block py-6 group"
+              >
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+                  <h2 class="font-display text-2xl sm:text-3xl group-hover:text-rust dark:group-hover:text-rust-bright transition-colors">
+                    {post.data.title}
+                  </h2>
+                  <time
+                    datetime={post.data.pubDate.toISOString()}
+                    class="font-mono text-xs text-coal/60 dark:text-bone-dim/60 shrink-0"
+                  >
+                    {formatDate(post.data.pubDate)}
+                  </time>
+                </div>
+                <p class="mt-2 text-coal/70 dark:text-bone-dim/70">
+                  {post.data.description}
+                </p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</Layout>

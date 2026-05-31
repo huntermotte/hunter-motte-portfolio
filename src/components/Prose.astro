@@ -1,0 +1,182 @@
+---
+---
+
+<article class="prose">
+  <slot />
+</article>
+
+<style is:global>
+  .prose {
+    max-width: 65ch;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: color-mix(in oklab, var(--color-coal) 90%, transparent);
+  }
+
+  html.dark .prose {
+    color: color-mix(in oklab, var(--color-bone-dim) 90%, transparent);
+  }
+
+  .prose > * + * {
+    margin-top: 1.25em;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--color-coal);
+    margin-top: 2.5em;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+  }
+
+  html.dark .prose h1,
+  html.dark .prose h2,
+  html.dark .prose h3,
+  html.dark .prose h4 {
+    color: var(--color-bone-dim);
+  }
+
+  .prose h2 {
+    font-size: 1.75rem;
+  }
+
+  .prose h3 {
+    font-size: 1.375rem;
+  }
+
+  .prose h4 {
+    font-size: 1.125rem;
+  }
+
+  .prose a {
+    color: var(--color-pine);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: color-mix(in oklab, var(--color-pine) 40%, transparent);
+    transition: color 150ms, text-decoration-color 150ms;
+  }
+
+  html.dark .prose a {
+    color: var(--color-pine-bright);
+    text-decoration-color: color-mix(
+      in oklab,
+      var(--color-pine-bright) 40%,
+      transparent
+    );
+  }
+
+  .prose a:hover {
+    color: var(--color-rust);
+    text-decoration-color: var(--color-rust);
+  }
+
+  html.dark .prose a:hover {
+    color: var(--color-rust-bright);
+    text-decoration-color: var(--color-rust-bright);
+  }
+
+  .prose strong {
+    font-weight: 600;
+    color: var(--color-coal);
+  }
+
+  html.dark .prose strong {
+    color: var(--color-bone-dim);
+  }
+
+  .prose em {
+    font-style: italic;
+  }
+
+  .prose blockquote {
+    border-left: 2px solid var(--color-pine);
+    padding-left: 1.25rem;
+    margin-left: 0;
+    font-style: italic;
+    color: color-mix(in oklab, currentColor 80%, transparent);
+  }
+
+  html.dark .prose blockquote {
+    border-left-color: var(--color-pine-bright);
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 1.5rem;
+  }
+
+  .prose ul {
+    list-style: disc;
+  }
+
+  .prose ol {
+    list-style: decimal;
+  }
+
+  .prose li + li {
+    margin-top: 0.5em;
+  }
+
+  .prose li > p {
+    margin: 0;
+  }
+
+  .prose code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background-color: color-mix(in oklab, var(--color-pine) 8%, transparent);
+    color: var(--color-pine);
+    padding: 0.125em 0.375em;
+    border-radius: 3px;
+  }
+
+  html.dark .prose code {
+    background-color: color-mix(
+      in oklab,
+      var(--color-pine-bright) 15%,
+      transparent
+    );
+    color: var(--color-pine-bright);
+  }
+
+  .prose pre {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    background-color: var(--color-coal);
+    color: var(--color-bone);
+    padding: 1.25rem 1.5rem;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+
+  .prose pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+    font-size: 1em;
+  }
+
+  .prose hr {
+    border: none;
+    border-top: 1px solid var(--color-hairline);
+    margin: 3em auto;
+    width: 50%;
+  }
+
+  html.dark .prose hr {
+    border-top-color: var(--color-hairline-night);
+  }
+
+  .prose img {
+    border-radius: 4px;
+    margin: 1.5em 0;
+  }
+</style>

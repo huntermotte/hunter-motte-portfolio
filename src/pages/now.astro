@@ -1,0 +1,58 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const now = new Date();
+const monthYear = now.toLocaleDateString("en-US", {
+  month: "long",
+  year: "numeric",
+});
+---
+
+<Layout title="Now" description="What I'm focused on right now.">
+  <section class="mx-auto max-w-3xl px-6 sm:px-8 pt-24 sm:pt-32">
+    <p class="font-display italic text-base text-pine dark:text-pine-bright mb-6">
+      Now —
+    </p>
+    <h1 class="font-display text-5xl sm:text-6xl leading-[1.05] tracking-tight">
+      What I'm focused on.
+    </h1>
+    <p class="mt-4 font-mono text-xs text-coal/60 dark:text-bone-dim/60">
+      Updated {monthYear}
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 sm:px-8 mt-16 space-y-10">
+    <div>
+      <p class="font-display italic text-base text-pine dark:text-pine-bright mb-3">
+        At work —
+      </p>
+      <p class="text-coal/80 dark:text-bone-dim/80 leading-relaxed">
+        Placeholder. The team I'm leading, the problem we're focused on,
+        the next milestone.
+      </p>
+    </div>
+
+    <div>
+      <p class="font-display italic text-base text-pine dark:text-pine-bright mb-3">
+        Reading / learning —
+      </p>
+      <p class="text-coal/80 dark:text-bone-dim/80 leading-relaxed">
+        Placeholder. Current book, course, or topic I'm digging into.
+      </p>
+    </div>
+
+    <div>
+      <p class="font-display italic text-base text-pine dark:text-pine-bright mb-3">
+        Off the clock —
+      </p>
+      <p class="text-coal/80 dark:text-bone-dim/80 leading-relaxed">
+        Placeholder. Trails on the list, music on rotation, whatever the
+        Bronco is up to.
+      </p>
+    </div>
+
+    <p class="font-mono text-xs text-coal/50 dark:text-bone-dim/50 pt-6 border-t hairline">
+      Inspired by <a href="https://nownownow.com/about" class="text-pine dark:text-pine-bright hover:text-rust dark:hover:text-rust-bright transition-colors">/now pages</a>.
+    </p>
+  </section>
+</Layout>

@@ -1,5 +1,19 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+
+const recentPosts = (
+  await getCollection("blog", ({ data }) => !data.draft)
+)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 ---
 
 <Layout>
@@ -35,7 +49,7 @@ import Layout from "../layouts/Layout.astro";
         href="/blog"
         class="font-display italic text-lg hover:text-rust dark:hover:text-rust-bright transition-colors"
       >
-        Field Notes <span aria-hidden="true">→</span>
+        Blog <span aria-hidden="true">→</span>
       </a>
     </div>
   </section>
@@ -45,9 +59,44 @@ import Layout from "../layouts/Layout.astro";
       <p class="font-display italic text-base text-pine dark:text-pine-bright mb-6">
         Recent writing —
       </p>
-      <p class="text-coal/60 dark:text-bone-dim/60">
-        Field Notes coming soon.
-      </p>
+
+      {
+        recentPosts.length === 0 ? (
+          <p class="text-coal/60 dark:text-bone-dim/60">
+            First post coming soon.
+          </p>
+        ) : (
+          <ul class="divide-y hairline">
+            {recentPosts.map((post) => (
+              <li>
+                <a href={`/blog/${post.id}`} class="block py-5 group">
+                  <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                    <h3 class="font-display text-xl group-hover:text-rust dark:group-hover:text-rust-bright transition-colors">
+                      {post.data.title}
+                    </h3>
+                    <time
+                      datetime={post.data.pubDate.toISOString()}
+                      class="font-mono text-xs text-coal/60 dark:text-bone-dim/60 shrink-0"
+                    >
+                      {formatDate(post.data.pubDate)}
+                    </time>
+                  </div>
+                  <p class="mt-1 text-sm text-coal/70 dark:text-bone-dim/70">
+                    {post.data.description}
+                  </p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+
+      <a
+        href="/blog"
+        class="font-display italic text-base text-pine dark:text-pine-bright hover:text-rust dark:hover:text-rust-bright transition-colors inline-block mt-6"
+      >
+        Read the blog <span aria-hidden="true">→</span>
+      </a>
     </div>
   </section>
 </Layout>

@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const work = (await getCollection("work")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<Layout title="Built" description="Case studies — teams led, systems shipped, work I'm proud of.">
+  <section class="mx-auto max-w-3xl px-6 sm:px-8 pt-24 sm:pt-32">
+    <p class="font-display italic text-base text-pine dark:text-pine-bright mb-6">
+      Built —
+    </p>
+    <h1 class="font-display text-5xl sm:text-6xl leading-[1.05] tracking-tight">
+      What I've shipped.
+    </h1>
+    <p class="mt-6 text-lg text-coal/70 dark:text-bone-dim/70 max-w-2xl">
+      Selected work from the last several years. Teams led, systems built,
+      problems that taught me something.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 sm:px-8 mt-20">
+    {
+      work.length === 0 ? (
+        <p class="text-coal/60 dark:text-bone-dim/60 italic">
+          Case studies coming soon.
+        </p>
+      ) : (
+        <ul class="space-y-12">
+          {work.map((item) => (
+            <li class="border-t hairline pt-10">
+              <a href={`/work/${item.id}`} class="group block">
+                <p class="font-mono text-xs text-coal/60 dark:text-bone-dim/60 mb-3">
+                  {item.data.role} · {item.data.timeframe}
+                </p>
+                <h2 class="font-display text-3xl sm:text-4xl tracking-tight group-hover:text-rust dark:group-hover:text-rust-bright transition-colors">
+                  {item.data.title}
+                </h2>
+                <p class="mt-4 text-coal/70 dark:text-bone-dim/70">
+                  {item.data.summary}
+                </p>
+                {item.data.stack.length > 0 && (
+                  <p class="mt-4 font-mono text-xs text-coal/50 dark:text-bone-dim/50">
+                    {item.data.stack.join(" · ")}
+                  </p>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</Layout>

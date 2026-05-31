@@ -4,7 +4,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 const links = [
   { href: "/about", label: "About" },
   { href: "/work", label: "Built" },
-  { href: "/blog", label: "Field Notes" },
+  { href: "/blog", label: "Blog" },
   { href: "/now", label: "Now" },
 ];
 
@@ -33,8 +33,9 @@ const isActive = (href: string) =>
               <a
                 href={href}
                 class:list={[
-                  "label-mono hover:text-coal dark:hover:text-bone transition-colors",
-                  isActive(href) && "text-coal dark:text-bone",
+                  "text-sm text-coal/70 dark:text-bone-dim/70 hover:text-pine dark:hover:text-pine-bright transition-colors",
+                  isActive(href) &&
+                    "font-medium text-pine dark:text-pine-bright",
                 ]}
               >
                 {label}

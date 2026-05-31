@@ -1,0 +1,71 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Prose from "../../components/Prose.astro";
+
+export async function getStaticPaths() {
+  const work = await getCollection("work");
+  return work.map((item) => ({
+    params: { slug: item.id },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+---
+
+<Layout title={item.data.title} description={item.data.summary}>
+  <article class="mx-auto max-w-3xl px-6 sm:px-8 pt-20 sm:pt-28 pb-10">
+    <a
+      href="/work"
+      class="font-display italic text-sm text-pine dark:text-pine-bright hover:text-rust dark:hover:text-rust-bright transition-colors inline-block mb-12"
+    >
+      ← Built
+    </a>
+
+    <header class="mb-12">
+      <p class="font-mono text-xs text-coal/60 dark:text-bone-dim/60 mb-4">
+        {item.data.role} · {item.data.timeframe}
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl leading-[1.1] tracking-tight">
+        {item.data.title}
+      </h1>
+      <p class="mt-5 text-lg text-coal/70 dark:text-bone-dim/70">
+        {item.data.summary}
+      </p>
+
+      {
+        item.data.outcomes.length > 0 && (
+          <div class="mt-8 border-t hairline pt-6">
+            <p class="font-display italic text-base text-pine dark:text-pine-bright mb-4">
+              Outcomes —
+            </p>
+            <ul class="space-y-2">
+              {item.data.outcomes.map((outcome) => (
+                <li class="flex gap-3">
+                  <span class="text-rust dark:text-rust-bright shrink-0">
+                    ▸
+                  </span>
+                  <span>{outcome}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
+      {
+        item.data.stack.length > 0 && (
+          <p class="mt-6 font-mono text-xs text-coal/50 dark:text-bone-dim/50">
+            {item.data.stack.join(" · ")}
+          </p>
+        )
+      }
+    </header>
+
+    <Prose>
+      <Content />
+    </Prose>
+  </article>
+</Layout>
