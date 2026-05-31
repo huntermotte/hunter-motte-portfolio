@@ -63,6 +63,8 @@ Personal portfolio for **huntermotte.com**. Hunter is transitioning from senior 
 
 **Top padding under the nav:** standard pages use `pt-12 sm:pt-16` on the first `<section>` after the Layout. Detail pages (with a back link first) use `pt-10 sm:pt-14`. The 404 uses `pt-20 sm:pt-28` to stay vertically centered. Don't drift back to `pt-24 sm:pt-32` — Hunter felt that was too much breathing room between nav and content.
 
+**Page-name eyebrows removed (2026-05-31).** Earlier scaffolding put an italic Fraunces eyebrow above each page headline (`Currently —`, `About —`, `Blog —`, `Built —`, `Now —`). Hunter asked to strip all of these — headlines now lead each page directly. Section-internal eyebrows inside a page (e.g., "Recent writing —" on the homepage, "At work — / Reading / learning — / Off the clock —" on the Now page) are fine; the rule only applies to the page-name eyebrow that sat between the nav and the H1.
+
 ## File map
 
 ```

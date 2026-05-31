@@ -33,7 +33,7 @@ const isActive = (href: string) =>
               <a
                 href={href}
                 class:list={[
-                  "text-sm text-coal/70 dark:text-bone-dim/70 hover:text-pine dark:hover:text-pine-bright transition-colors",
+                  "text-base text-coal/70 dark:text-bone-dim/70 hover:text-pine dark:hover:text-pine-bright transition-colors",
                   isActive(href) &&
                     "font-medium text-pine dark:text-pine-bright",
                 ]}
@@ -44,7 +44,85 @@ const isActive = (href: string) =>
           ))
         }
       </ul>
+
       <ThemeToggle />
+
+      <button
+        type="button"
+        id="mobile-menu-toggle"
+        class="sm:hidden inline-flex h-8 w-8 items-center justify-center text-coal/70 dark:text-bone-dim/70 hover:text-pine dark:hover:text-pine-bright transition-colors"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg
+          class="hamburger-icon h-5 w-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+        <svg
+          class="close-icon h-5 w-5 hidden"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <path d="M6 6l12 12M6 18L18 6"></path>
+        </svg>
+      </button>
     </div>
   </nav>
+
+  <div id="mobile-menu" class="hidden sm:hidden border-t hairline">
+    <ul class="mx-auto max-w-5xl px-6 py-3">
+      {
+        links.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              class:list={[
+                "block py-3 text-lg text-coal/80 dark:text-bone-dim/80 hover:text-pine dark:hover:text-pine-bright transition-colors",
+                isActive(href) &&
+                  "font-medium text-pine dark:text-pine-bright",
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </header>
+
+<script>
+  const toggle = document.getElementById("mobile-menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const hamburger = toggle?.querySelector(".hamburger-icon");
+  const close = toggle?.querySelector(".close-icon");
+
+  function setOpen(open: boolean) {
+    if (!menu || !toggle) return;
+    menu.classList.toggle("hidden", !open);
+    hamburger?.classList.toggle("hidden", open);
+    close?.classList.toggle("hidden", !open);
+    toggle.setAttribute("aria-expanded", String(open));
+  }
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    setOpen(!isOpen);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
+</script>
