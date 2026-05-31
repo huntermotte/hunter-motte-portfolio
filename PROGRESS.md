@@ -57,6 +57,12 @@ Personal portfolio for **huntermotte.com**. Hunter is transitioning from senior 
 
 **Copy voice:** confident and smart. Restrained. Hunter rejected "Wander to Field Notes" as too forward/folksy. Simple verb phrases beat clever ones.
 
+**Section naming (decided 2026-05-31):** the blog section is called **"Blog"** — not "Field Notes." Hunter explicitly chose the plainer term over the editorial framing. The work section is "Built", the about page is "About", the current-focus page is "Now". Don't drift back to "Field Notes."
+
+**Nav link styling:** Plex Sans, text-sm, sentence case, hover-to-pine — NOT italic Fraunces and NOT mono caps. Nav links need to read as functional navigation, distinct from the editorial italic-serif CTAs used inline.
+
+**Top padding under the nav:** standard pages use `pt-12 sm:pt-16` on the first `<section>` after the Layout. Detail pages (with a back link first) use `pt-10 sm:pt-14`. The 404 uses `pt-20 sm:pt-28` to stay vertically centered. Don't drift back to `pt-24 sm:pt-32` — Hunter felt that was too much breathing room between nav and content.
+
 ## File map
 
 ```
@@ -68,7 +74,7 @@ hunter-motte-portfolio/
 │   ├── content.config.ts          ← Zod schemas for blog + work collections
 │   ├── content/
 │   │   ├── blog/
-│   │   │   └── hello-field-notes.mdx     ← placeholder seed post
+│   │   │   └── hello-world.mdx          ← placeholder seed post
 │   │   └── work/
 │   │       └── sample-platform-team.mdx  ← placeholder seed case study
 │   ├── styles/
@@ -110,7 +116,7 @@ hunter-motte-portfolio/
 - Homepage hero (currently placeholder: "Engineering leader, building teams that ship...")
 - About page (currently all placeholders)
 - Now page (currently all placeholders)
-- First real blog post to replace `hello-field-notes.mdx`
+- First real blog post to replace `hello-world.mdx`
 - First real case study to replace `sample-platform-team.mdx`
 
 To draft copy, ask Hunter the 5 questions in this conversation's history, or use these starting prompts:
