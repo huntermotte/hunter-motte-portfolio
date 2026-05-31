@@ -1,0 +1,36 @@
+---
+const year = new Date().getFullYear();
+
+const socials = [
+  { href: "https://github.com/huntermotte", label: "GitHub" },
+  { href: "https://www.linkedin.com/in/huntermotte/", label: "LinkedIn" },
+];
+---
+
+<footer class="border-t hairline mt-24">
+  <div
+    class="mx-auto max-w-5xl px-6 sm:px-8 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+  >
+    <div class="space-y-1">
+      <p class="font-display text-base">Hunter Motte</p>
+      <p class="label-mono">© {year} · Built in the Pacific Northwest</p>
+    </div>
+
+    <ul class="flex items-center gap-6">
+      {
+        socials.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="label-mono hover:text-coal dark:hover:text-bone transition-colors"
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</footer>

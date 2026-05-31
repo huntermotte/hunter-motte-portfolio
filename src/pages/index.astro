@@ -1,17 +1,49 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <section class="mx-auto max-w-3xl px-6 sm:px-8 pt-24 sm:pt-32">
+    <p class="label-mono mb-6">▲ 01 · Currently</p>
+
+    <h1
+      class="font-display text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-tight"
+    >
+      Engineering leader,
+      <span class="text-pine dark:text-pine-bright italic">building</span>
+      teams that ship.
+    </h1>
+
+    <p
+      class="mt-8 text-lg sm:text-xl leading-relaxed max-w-2xl text-coal/80 dark:text-bone-dim/80"
+    >
+      Former software engineer, now Engineering Manager — drawn to the work
+      that sits between systems and people. Looking for the next room where
+      that work matters.
+    </p>
+
+    <div class="mt-10 flex items-center gap-6">
+      <a
+        href="/about"
+        class="label-mono text-pine dark:text-pine-bright hover:text-rust dark:hover:text-rust-bright transition-colors"
+      >
+        Read more →
+      </a>
+      <a
+        href="/blog"
+        class="label-mono hover:text-coal dark:hover:text-bone transition-colors"
+      >
+        Field Notes →
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 sm:px-8 mt-32">
+    <div class="border-t hairline pt-10">
+      <p class="label-mono mb-6">▲ 02 · Recent writing</p>
+      <p class="text-coal/60 dark:text-bone-dim/60 italic">
+        Field Notes coming soon.
+      </p>
+    </div>
+  </section>
+</Layout>

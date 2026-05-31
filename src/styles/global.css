@@ -1,1 +1,67 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bone: #f5f1ea;
+  --color-bone-dim: #ede5d6;
+  --color-coal: #1a1614;
+  --color-coal-night: #14110f;
+  --color-pine: #2d3e2c;
+  --color-pine-bright: #4a6249;
+  --color-rust: #a8542a;
+  --color-rust-bright: #c46d3d;
+  --color-hairline: #d9d1bf;
+  --color-hairline-night: #2a241e;
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-bone);
+    color: var(--color-coal);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html.dark {
+    background-color: var(--color-coal-night);
+    color: var(--color-bone-dim);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background-color: var(--color-pine);
+    color: var(--color-bone);
+  }
+
+  html.dark ::selection {
+    background-color: var(--color-rust);
+    color: var(--color-coal-night);
+  }
+}
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, currentColor 65%, transparent);
+}
+
+@utility hairline {
+  border-color: var(--color-hairline);
+}
+
+html.dark .hairline {
+  border-color: var(--color-hairline-night);
+}
