@@ -4,7 +4,9 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout>
   <section class="mx-auto max-w-3xl px-6 sm:px-8 pt-24 sm:pt-32">
-    <p class="label-mono mb-6">▲ 01 · Currently</p>
+    <p class="font-display italic text-base text-pine dark:text-pine-bright mb-6">
+      Currently —
+    </p>
 
     <h1
       class="font-display text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-tight"
@@ -22,26 +24,28 @@ import Layout from "../layouts/Layout.astro";
       that work matters.
     </p>
 
-    <div class="mt-10 flex items-center gap-6">
+    <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3">
       <a
         href="/about"
-        class="label-mono text-pine dark:text-pine-bright hover:text-rust dark:hover:text-rust-bright transition-colors"
+        class="font-display italic text-lg text-pine dark:text-pine-bright hover:text-rust dark:hover:text-rust-bright transition-colors"
       >
-        Read more →
+        Read more <span aria-hidden="true">→</span>
       </a>
       <a
         href="/blog"
-        class="label-mono hover:text-coal dark:hover:text-bone transition-colors"
+        class="font-display italic text-lg hover:text-rust dark:hover:text-rust-bright transition-colors"
       >
-        Field Notes →
+        Field Notes <span aria-hidden="true">→</span>
       </a>
     </div>
   </section>
 
   <section class="mx-auto max-w-3xl px-6 sm:px-8 mt-32">
     <div class="border-t hairline pt-10">
-      <p class="label-mono mb-6">▲ 02 · Recent writing</p>
-      <p class="text-coal/60 dark:text-bone-dim/60 italic">
+      <p class="font-display italic text-base text-pine dark:text-pine-bright mb-6">
+        Recent writing —
+      </p>
+      <p class="text-coal/60 dark:text-bone-dim/60">
         Field Notes coming soon.
       </p>
     </div>
