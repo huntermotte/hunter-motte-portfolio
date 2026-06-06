@@ -1,37 +1,179 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Prose from "../components/Prose.astro";
+
+const experience = [
+  {
+    role: "Manager, Project Development",
+    company: "Railinc Corp.",
+    period: "Oct 2024 — Present",
+    location: "Cary, NC",
+  },
+  {
+    role: "Full Stack Software Engineer",
+    company: "Clinetic",
+    period: "Mar 2021 — Jun 2024",
+    location: "Raleigh-Durham, NC",
+  },
+  {
+    role: "Senior Software Engineer",
+    company: "Harvested Financial",
+    period: "Jun 2020 — Mar 2021",
+    location: "",
+  },
+  {
+    role: "Software Engineer",
+    company: "Galatea Associates",
+    period: "Apr 2018 — Jun 2020",
+    location: "Greater Boston",
+  },
+  {
+    role: "Financial Advisor",
+    company: "Voya Financial Advisors",
+    period: "Sep 2015 — Apr 2018",
+    location: "Raleigh-Durham, NC",
+  },
+  {
+    role: "Workplace Planning & Guidance Consultant",
+    company: "Fidelity Investments",
+    period: "Aug 2014 — Aug 2015",
+    location: "",
+  },
+];
+
+const certifications = [
+  "Project Management Professional (PMP)",
+  "AWS Essential Training for Developers",
+  "Learning Spring 6 with Spring Boot 3",
+  "Series 7",
+  "Series 66",
+];
 ---
 
-<Layout title="About" description="Hunter Motte — engineering manager, former software engineer, looking for the next room where the work matters.">
+<Layout
+  title="About"
+  description="Hunter Motte — Engineering Manager at Railinc Corp. The longer story behind the homepage."
+>
   <section class="mx-auto max-w-3xl px-6 sm:px-8 pt-12 sm:pt-16">
     <h1 class="font-display text-5xl sm:text-6xl leading-[1.05] tracking-tight">
       The longer story.
     </h1>
   </section>
 
-  <section class="mx-auto px-6 sm:px-8 mt-16">
+  <section class="mx-auto max-w-3xl px-6 sm:px-8 mt-14">
     <Prose>
+      <h2>How I got here</h2>
       <p>
-        Long-form bio goes here. Career arc, what I've led, what I'm
-        hunting for next, and the personal angles that make the rest of
-        it make sense.
+        Coming out of college at UNC, I was not 100% sure about what I wanted to do.
+        I landed at Fidelity Investments and got my Series 7 and Series 66 licenses to
+        deliver Fidelity 401(k) customers with investment guidance. After having those
+        conversations with customers on the phone, I wanted to do the same thing but in-person.
+        I joined Voya Financial as an independent Financial Advisor and worked with Wake County Public School System
+        staff, since Voya held their 403(b) plan. I came to understand the NC Pension system and various challenges our
+        educators face when planning for retirement.
+      </p>
+      <p>
+        In 2017, I started to question what I REALLY wanted to do in life. Working on building something from scratch
+        always interested me, and at this time I was following all the happenings in Silicon Valley. The
+        idea of learning how to code so I could build something of my own consumed me. I started with free resources
+        like Codecademy and freeCodeCamp.org so see if I was interested in coding. I caught the bug instantly and
+        decided to pursue software development as a career by going through a formal bootcamp. While working my existing
+        job as a Financial Advisor, I completed the bootcamp and built projects on nights and weekends and eventually landed a software role
+         in finance in Boston.
+      </p>
+      <p>
+          That role started my journey as a Software Engineer. I was fortunate to work with great coworkers at Galatea Associates
+          with great clients working on very interesting financial software projects. I eventually decided to try my hand in the startup
+          world by joining an early stage startup as the 3rd employee, building an options robo-advisor that managed
+          strategies and helped users select the ideal strategy for their situation. The process taught me a lot about individual ownership,
+          product-market fit, and what goes into maintaining a real business that serves customers and must remain compliant with
+          strict financial regulations.
+      </p>
+      <p>
+        Following that experience, I worked in another startup environment, this time in healthcare with
+                  a more mature and funded team as the 1st/2nd engineer hired after the CTO (me and another Dev started on the same day). I
+                  grew a lot as a developer and got to work alongside a very talented and hardworking team that delivered great value and insights
+                  for clinical tral enrollment. Seeing what great software building processes looked like help me always work
+                  towards what it best, even if it wasn't easy.
       </p>
 
-      <h2>How I got here</h2>
-      <p>Placeholder.</p>
-
       <h2>What I lead today</h2>
-      <p>Placeholder.</p>
+      <p>
+        At Railinc, I lead Dev teams on software projects impacting the freight rail industry. The work is
+        about pairing technical depth with delivery discipline: scoping
+        ambiguous problems with stakeholders, breaking work down into
+        shippable milestones, and unblocking the engineers doing the
+        building. I still write code when needed and love to stay in the weeds with technical conversations.
+         My main job is making sure the team has the room and the clarity to do their best work and that we delight the customer.
+      </p>
+      <p>
+          I am finding that I truly enjoy this type of role, as it allows me to pait the bigger picture while ensuring the minute
+          details are handled elegantly. Management is certainly a different role than being an IC Software Engineer, but having
+          that background is critical to understanding the problem space well. I am constantly growing as a leader and seek
+          out big opportunities to push the limits on what I can do.
+        </p>
 
-      <h2>What I'm looking for next</h2>
-      <p>Placeholder.</p>
+      <h2>What I'm working towards</h2>
+      <p>
+        Two things, mostly. The first is getting better at the parts of
+        management that don't show up in any handbook. The conversations
+        that change the trajectory of someone's career. Understanding how to get
+        the best out of my team while keeping everyone's headspace in the right place.
+        Making space for the deep work that gets crowded out by
+        everything else.
+      </p>
+      <p>
+        The second is leverage. The early years of management are about
+        doing the work alongside the team. The next chapter is about
+        building the conditions where good work happens without me in
+        the room. The modern tools we have at our disposal should allow for
+        greater leverage than we've seen in quite some time. My main goal is ship
+        software that I will be produ of for decades to come while enjoying the ride at
+        the same time.
+      </p>
 
       <h2>Off the clock</h2>
       <p>
-        The Bronco. The trails. A guitar in the corner. The list of
-        things I'd rather be doing than refreshing my inbox.
+        Outside of work: the Bronco, the outdoors, music. Guitar in the
+        corner of the room. Carolina roots that run deep. The trail or
+        the open road over the inbox, most days.
       </p>
     </Prose>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 sm:px-8 mt-20">
+    <h2 class="font-display text-3xl tracking-tight mb-6">Experience</h2>
+    <ul class="border-t hairline">
+      {
+        experience.map((job) => (
+          <li class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-x-8 gap-y-1 py-5 border-b hairline">
+            <div>
+              <p class="font-display text-lg leading-snug">{job.role}</p>
+              <p class="text-coal/70 dark:text-bone-dim/70">{job.company}</p>
+            </div>
+            <div class="font-mono text-xs text-coal/60 dark:text-bone-dim/60 sm:text-right sm:pt-1.5 space-y-0.5">
+              <p>{job.period}</p>
+              {job.location && <p>{job.location}</p>}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 sm:px-8 mt-20">
+    <h2 class="font-display text-3xl tracking-tight mb-6">Certifications</h2>
+    <ul class="border-t hairline pt-6 space-y-3 text-coal/80 dark:text-bone-dim/80">
+      {
+        certifications.map((cert) => (
+          <li class="flex gap-3">
+            <span class="text-rust dark:text-rust-bright shrink-0" aria-hidden="true">
+              ▸
+            </span>
+            <span>{cert}</span>
+          </li>
+        ))
+      }
+    </ul>
   </section>
 </Layout>
