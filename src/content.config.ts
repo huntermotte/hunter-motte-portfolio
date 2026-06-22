@@ -18,6 +18,7 @@ const work = defineCollection({
   schema: z.object({
     title: z.string(),
     tagline: z.string().optional(),
+    icon: z.string().optional(),
     role: z.string().optional(),
     timeframe: z.string().optional(),
     summary: z.string(),

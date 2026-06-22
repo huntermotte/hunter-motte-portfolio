@@ -26,6 +26,17 @@ const { Content } = await render(item);
 
     <header class="mb-12">
       {
+        item.data.icon && (
+          <img
+            src={item.data.icon}
+            alt={`${item.data.title} app icon`}
+            width="80"
+            height="80"
+            class="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl border hairline object-contain bg-white mb-6"
+          />
+        )
+      }
+      {
         (item.data.role || item.data.timeframe || item.data.platforms.length > 0) && (
           <p class="font-mono text-xs text-coal/60 dark:text-bone-dim/60 mb-4">
             {[item.data.role, item.data.timeframe, ...item.data.platforms]
