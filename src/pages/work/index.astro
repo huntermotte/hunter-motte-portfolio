@@ -5,16 +5,19 @@ import Layout from "../../layouts/Layout.astro";
 const work = (await getCollection("work")).sort(
   (a, b) => a.data.order - b.data.order,
 );
+
+const hostOf = (url: string) => new URL(url).hostname.replace(/^www\./, "");
 ---
 
-<Layout title="Built" description="Case studies — teams led, systems shipped, work I'm proud of.">
+<Layout title="Built" description="Products I design and build on my own, under Pinecone Software.">
   <section class="mx-auto max-w-3xl px-6 sm:px-8 pt-12 sm:pt-16">
     <h1 class="font-display text-5xl sm:text-6xl leading-[1.05] tracking-tight">
       What I've shipped.
     </h1>
     <p class="mt-6 text-lg text-coal/70 dark:text-bone-dim/70 max-w-2xl">
-      Selected work from the last several years. Teams led, systems built,
-      problems that taught me something.
+      The work I'm proudest of — the teams and platforms I lead day to day —
+      mostly lives behind closed doors. These are the things I design and
+      build in the open, under Pinecone Software.
     </p>
   </section>
 
@@ -22,28 +25,49 @@ const work = (await getCollection("work")).sort(
     {
       work.length === 0 ? (
         <p class="text-coal/60 dark:text-bone-dim/60 italic">
-          Case studies coming soon.
+          Projects coming soon.
         </p>
       ) : (
         <ul class="space-y-12">
           {work.map((item) => (
             <li class="border-t hairline pt-10">
-              <a href={`/work/${item.id}`} class="group block">
+              {item.data.platforms.length > 0 && (
                 <p class="font-mono text-xs text-coal/60 dark:text-bone-dim/60 mb-3">
-                  {item.data.role} · {item.data.timeframe}
+                  {item.data.platforms.join(" · ")}
                 </p>
-                <h2 class="font-display text-3xl sm:text-4xl tracking-tight group-hover:text-rust dark:group-hover:text-rust-bright transition-colors">
-                  {item.data.title}
-                </h2>
-                <p class="mt-4 text-coal/70 dark:text-bone-dim/70">
-                  {item.data.summary}
-                </p>
-                {item.data.stack.length > 0 && (
-                  <p class="mt-4 font-mono text-xs text-coal/50 dark:text-bone-dim/50">
-                    {item.data.stack.join(" · ")}
-                  </p>
+              )}
+              <h2 class="font-display text-3xl sm:text-4xl tracking-tight">
+                {item.data.url ? (
+                  <a
+                    href={item.data.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-rust dark:hover:text-rust-bright transition-colors"
+                  >
+                    {item.data.title}
+                  </a>
+                ) : (
+                  item.data.title
                 )}
-              </a>
+              </h2>
+              {item.data.tagline && (
+                <p class="mt-2 font-display italic text-lg text-coal/70 dark:text-bone-dim/70">
+                  {item.data.tagline}
+                </p>
+              )}
+              <p class="mt-3 text-coal/70 dark:text-bone-dim/70">
+                {item.data.summary}
+              </p>
+              {item.data.url && (
+                <a
+                  href={item.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-4 inline-block font-display italic text-base text-pine dark:text-pine-bright hover:text-rust dark:hover:text-rust-bright transition-colors"
+                >
+                  Visit {hostOf(item.data.url)} <span aria-hidden="true">→</span>
+                </a>
+              )}
             </li>
           ))}
         </ul>

@@ -25,15 +25,42 @@ const { Content } = await render(item);
     </a>
 
     <header class="mb-12">
-      <p class="font-mono text-xs text-coal/60 dark:text-bone-dim/60 mb-4">
-        {item.data.role} · {item.data.timeframe}
-      </p>
+      {
+        (item.data.role || item.data.timeframe || item.data.platforms.length > 0) && (
+          <p class="font-mono text-xs text-coal/60 dark:text-bone-dim/60 mb-4">
+            {[item.data.role, item.data.timeframe, ...item.data.platforms]
+              .filter(Boolean)
+              .join(" · ")}
+          </p>
+        )
+      }
       <h1 class="font-display text-4xl sm:text-5xl leading-[1.1] tracking-tight">
         {item.data.title}
       </h1>
+      {
+        item.data.tagline && (
+          <p class="mt-3 font-display italic text-xl text-coal/70 dark:text-bone-dim/70">
+            {item.data.tagline}
+          </p>
+        )
+      }
       <p class="mt-5 text-lg text-coal/70 dark:text-bone-dim/70">
         {item.data.summary}
       </p>
+
+      {
+        item.data.url && (
+          <a
+            href={item.data.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-5 inline-block font-display italic text-base text-pine dark:text-pine-bright hover:text-rust dark:hover:text-rust-bright transition-colors"
+          >
+            Visit {new URL(item.data.url).hostname.replace(/^www\./, "")}{" "}
+            <span aria-hidden="true">→</span>
+          </a>
+        )
+      }
 
       {
         item.data.outcomes.length > 0 && (
